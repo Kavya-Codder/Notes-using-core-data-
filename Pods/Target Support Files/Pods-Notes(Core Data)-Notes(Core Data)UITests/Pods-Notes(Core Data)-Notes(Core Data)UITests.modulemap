@@ -1,0 +1,6 @@
+framework module Pods_Notes_Core_Data__Notes_Core_Data_UITests {
+  umbrella header "Pods-Notes(Core Data)-Notes(Core Data)UITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
