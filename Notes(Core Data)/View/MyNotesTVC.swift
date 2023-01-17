@@ -38,6 +38,15 @@ static let identifier = "MyNotesTVC"
                 lblStatus.textColor = UIColor.white
                 btnEdit.tintColor = UIColor.white
                 btnDelete.tintColor = UIColor.white
+            } else {
+                viewContainer.backgroundColor = UIColor(named: "colour-4")
+                lblTitle.textColor = UIColor(named: "colour-5")
+                lblPriority.textColor = UIColor.black
+                lblDate.textColor = UIColor.black
+                lblDescription.textColor = UIColor.black
+                lblStatus.textColor = UIColor.black
+                btnEdit.tintColor = UIColor.black
+                btnDelete.tintColor = UIColor.black
             }
         }
     }

@@ -69,7 +69,7 @@ class AddNotesViewController: UIViewController {
         }
         datePicker.backgroundColor = .lightGray
         datePicker.datePickerMode =  .date
-        datePicker.maximumDate = Date()
+        //datePicker.maximumDate = Date()
         
         //ToolBar
         let toolbar = UIToolbar()
@@ -128,7 +128,7 @@ class AddNotesViewController: UIViewController {
         let validation = doValidation()
         if validation.0 {
             if self.obj != nil {
-                dbObject.updateRecord(id: Int32(obj?.id ?? 0), status: txtStatus.text ?? "")
+                dbObject.updateRecord(id: Int32(obj?.id ?? 0), title: txtTitle.text ?? "", date: txtDate.text ?? "", priority: txtPriority.text ?? "", status: txtStatus.text ?? "", discraption: txtDescription.text ?? "")
                 
                 showAlert(title: "Update", message: "Note update successfully") { (msg) in
                     self.navigationController?.popViewController(animated: true)
@@ -138,7 +138,9 @@ class AddNotesViewController: UIViewController {
                 let dict = ["id": Int32.random(in: 1..<50), "title": txtTitle.text ?? "", "priority": txtPriority.text ?? "", "date": txtDate.text ?? "", "status": txtStatus.text ?? "", "descraption": txtDescription.text ?? ""] as [String : Any]
                 dbObject.insertData(object: dict)
                 print(dict)
+                
                 showAlert(title: "Success", message: "Add note successfully") { (str) in
+                    self.dbObject.fetchStoredData()
                     self.navigationController?.popViewController(animated: true)
                 }
             }

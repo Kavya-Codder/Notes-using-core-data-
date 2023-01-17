@@ -7,20 +7,25 @@
 
 import UIKit
 
-class MyNotesListVC: UIViewController, UITextFieldDelegate {
+class MyNotesListVC: UIViewController, FilterData {
     
     @IBOutlet weak var lblNotesNotFound: UILabel!
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var notesListTV: UITableView!
+    @IBOutlet weak var filterBtn: UIButton!
+    
     var dbobject: DBHelper = DBHelper()
+  var obj = FilterVC()
+    
    // var obj: Notes?
     
     var notesArray: [Notes] = []
     var notesBackUpArray: [Notes] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+      
         initialSetUp()
         notesArray = dbobject.fetchStoredData()
         lblNotesNotFound.isHidden = true
@@ -33,21 +38,20 @@ class MyNotesListVC: UIViewController, UITextFieldDelegate {
         // SearchBar addTarget
         
         txtSearch.addTarget(self, action: #selector(textSearchChange(_:)), for: .editingChanged)
+        
       }
     
-    //    @IBAction func searchHendler(_ sender: UITextField) {
-//        if let searchText = sender.text {
-//            notesArray = notesBackUpArray.filter({ note in
-//                return (note.description).lowercased().contains(searchText.lowercased())
-//            })
-//        }
-//        self.notesListTV.reloadData()
-//    }
+    func featchData(filterNotes: [Notes]) {
+        notesArray = filterNotes
+        print(notesArray.count)
+        notesListTV.reloadData()
+    }
     
     @objc func textSearchChange(_ sender: UITextField){
         print(sender.text ?? "")
         if (sender.text?.isEmpty ?? false){
             self.notesArray = notesBackUpArray
+            
         } else {
             notesArray = notesBackUpArray.filter({ note in
                 return (note.description).lowercased().contains((sender.text ?? "").lowercased())
@@ -57,19 +61,29 @@ class MyNotesListVC: UIViewController, UITextFieldDelegate {
         self.notesListTV.reloadData()
     }
     
+    
     @IBAction func onClickAddBtn(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddNotesViewController") as! AddNotesViewController
         navigationController?.pushViewController(vc, animated: true)
 }
+    
+    
+    @IBAction func onClickSearchBtn(_ sender: Any) {
+        let filterVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FilterVC") as! FilterVC
+        filterVC.featchDataDelegate = self
+        filterVC.modalPresentationStyle = .overCurrentContext
+        self.present(filterVC, animated: true, completion: nil)
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         notesArray = dbobject.fetchStoredData()
-        self.notesListTV.reloadData()
-        notesNotFound()
+        notesListTV.reloadData()
     }
-}
+ }
 // Extension
 // Tableview Delegate
-extension MyNotesListVC: UITableViewDelegate, UITableViewDataSource {
+extension MyNotesListVC: UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notesArray.count
     }
@@ -121,6 +135,14 @@ extension MyNotesListVC: UITableViewDelegate, UITableViewDataSource {
         searchView.layer.cornerRadius = 15
         searchView.layer.borderWidth = 1.0
         searchView.layer.borderColor = UIColor.black.cgColor
+        
+        filterBtn.clipsToBounds = true
+        filterBtn.layer.cornerRadius = 12
+        filterBtn.layer.shadowColor = UIColor.black.cgColor
+        filterBtn.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        filterBtn.layer.shadowRadius = 2.0
+        filterBtn.layer.shadowOpacity = 1.0
+        filterBtn.layer.masksToBounds = true
     }
     
     

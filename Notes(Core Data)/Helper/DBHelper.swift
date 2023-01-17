@@ -47,10 +47,10 @@ class DBHelper {
         do {
             let fetchedRequest = try context.fetch(request) as! [Notes]
             notesArray = fetchedRequest
-            for data in fetchedRequest {
-                print(data.id)
-                print(data.title)
-            }
+//            for data in fetchedRequest {
+//                print(data.id)
+//                print(data.title)
+//            }
         } catch (let error) {
             print(error.localizedDescription)
         }
@@ -90,7 +90,7 @@ class DBHelper {
     
     //updateRecord
     
-    func updateRecord(id: Int32, status: String)  {
+    func updateRecord(id: Int32, title: String, date: String, priority: String, status: String, discraption: String)  {
         
         //get the object of app delegate
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -112,6 +112,11 @@ class DBHelper {
             if !results.isEmpty {
                 let Obj = results.first as! NSManagedObject
                 Obj.setValue(status, forKeyPath: "status")
+                Obj.setValue(title, forKey: "title")
+                Obj.setValue(date, forKeyPath: "date")
+                Obj.setValue(priority, forKey: "priority")
+                Obj.setValue(discraption, forKeyPath: "descraption")
+                
             }
             try managedContext.save()
             self.fetchStoredData()
@@ -119,7 +124,32 @@ class DBHelper {
             print(error.localizedDescription)
         }
     }
- 
+    
+    func filter(text: String) -> [Notes]{
+        var notesArray: [Notes] = []
+         let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        // create a context fron the container
+
+        let context = appdelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<Notes>(entityName: "Notes")
+        let predicate = NSPredicate(format: "(status=%@) OR (date=%@) OR (priority=%@)", text, text, text)
+        fetchRequest.predicate = predicate
+
+        do
+        {
+            let results = try context.fetch(fetchRequest)
+            notesArray = results
+
+            print(notesArray)
+            try context.save()
+           // self.fetchStoredData()
+        } catch(let error) {
+            print(error.localizedDescription)
+        }
+        return notesArray
+    }
+
+    
 }
 
 

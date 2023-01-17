@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		075ADA3C29768B4B0063FD4C /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075ADA3B29768B4B0063FD4C /* Protocol.swift */; };
+		075DA75E297523840035EEEE /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075DA75D297523840035EEEE /* FilterVC.swift */; };
 		07B441E329714D7200094DAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B441E229714D7200094DAA /* AppDelegate.swift */; };
 		07B441E529714D7200094DAA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B441E429714D7200094DAA /* SceneDelegate.swift */; };
 		07B441E729714D7200094DAA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B441E629714D7200094DAA /* ViewController.swift */; };
@@ -47,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		075ADA3B29768B4B0063FD4C /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		075DA75D297523840035EEEE /* FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
 		07B441DF29714D7200094DAA /* Notes(Core Data).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notes(Core Data).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B441E229714D7200094DAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07B441E429714D7200094DAA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,8 +142,6 @@
 			children = (
 				07B442212971505600094DAA /* Helper */,
 				07B442202971504D00094DAA /* Controller */,
-				07B4423E297150F500094DAA /* MyNotesListVC.swift */,
-				07B44239297150EE00094DAA /* AddNotesViewController.swift */,
 				07B4421F2971504400094DAA /* View */,
 				07B441E229714D7200094DAA /* AppDelegate.swift */,
 				07B441E429714D7200094DAA /* SceneDelegate.swift */,
@@ -183,6 +185,9 @@
 		07B442202971504D00094DAA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				07B44239297150EE00094DAA /* AddNotesViewController.swift */,
+				07B4423E297150F500094DAA /* MyNotesListVC.swift */,
+				075DA75D297523840035EEEE /* FilterVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 			children = (
 				07B4422A297150CF00094DAA /* Extension.swift */,
 				07B4424A2971520400094DAA /* DBHelper.swift */,
+				075ADA3B29768B4B0063FD4C /* Protocol.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -458,6 +464,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				075DA75E297523840035EEEE /* FilterVC.swift in Sources */,
+				075ADA3C29768B4B0063FD4C /* Protocol.swift in Sources */,
 				07B4424B2971520400094DAA /* DBHelper.swift in Sources */,
 				07B4422B297150CF00094DAA /* Extension.swift in Sources */,
 				07B442462971513300094DAA /* Notes+CoreDataProperties copy.swift in Sources */,
