@@ -17,15 +17,15 @@ class MyNotesListVC: UIViewController, FilterData {
     @IBOutlet weak var filterBtn: UIButton!
     
     var dbobject: DBHelper = DBHelper()
-  var obj = FilterVC()
+    var obj = FilterVC()
     
-   // var obj: Notes?
+    // var obj: Notes?
     
     var notesArray: [Notes] = []
     var notesBackUpArray: [Notes] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
         initialSetUp()
         notesArray = dbobject.fetchStoredData()
         lblNotesNotFound.isHidden = true
@@ -39,7 +39,7 @@ class MyNotesListVC: UIViewController, FilterData {
         
         txtSearch.addTarget(self, action: #selector(textSearchChange(_:)), for: .editingChanged)
         
-      }
+    }
     
     func featchData(filterNotes: [Notes]) {
         notesArray = filterNotes
@@ -65,7 +65,7 @@ class MyNotesListVC: UIViewController, FilterData {
     @IBAction func onClickAddBtn(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddNotesViewController") as! AddNotesViewController
         navigationController?.pushViewController(vc, animated: true)
-}
+    }
     
     
     @IBAction func onClickSearchBtn(_ sender: Any) {
@@ -80,7 +80,7 @@ class MyNotesListVC: UIViewController, FilterData {
         notesArray = dbobject.fetchStoredData()
         notesListTV.reloadData()
     }
- }
+}
 // Extension
 // Tableview Delegate
 extension MyNotesListVC: UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
@@ -92,12 +92,12 @@ extension MyNotesListVC: UITableViewDelegate, UITableViewDataSource, UITextField
         let cell = notesListTV.dequeueReusableCell(withIdentifier: MyNotesTVC.identifier, for: indexPath) as! MyNotesTVC
         cell.obj = notesArray[indexPath.row]
         cell.lblCountNumber.text = "\(indexPath.row + 1)"
-       
+        
         // Delete item
         cell.deleteNotes = {
             let alertVC = UIAlertController(title: "Delete", message: "Are you sure?", preferredStyle: .alert)
             let yesBtn = UIAlertAction(title: "YES", style: .destructive) { (alert) in
-             let obj = self.notesArray[indexPath.row]
+                let obj = self.notesArray[indexPath.row]
                 
                 self.dbobject.deleteRecord(id: Int32(obj.id ), index: indexPath.row)
                 self.notesArray.remove(at: indexPath.row)
@@ -116,12 +116,12 @@ extension MyNotesListVC: UITableViewDelegate, UITableViewDataSource, UITextField
             let editVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "AddNotesViewController") as! AddNotesViewController
             editVC.obj = self.notesArray[indexPath.row]
             self.navigationController?.pushViewController(editVC, animated: false)
-
+            
         }
         
         return cell
     }
-
+    
     func notesNotFound() {
         if notesArray.count == 0 {
             lblNotesNotFound.isHidden = false
