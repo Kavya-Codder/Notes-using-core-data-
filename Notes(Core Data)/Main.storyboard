@@ -180,7 +180,7 @@
                                         <rect key="frame" x="0.0" y="350" width="414" height="546"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4f9-zn-2Xj">
-                                                <rect key="frame" x="20" y="25" width="374" height="20"/>
+                                                <rect key="frame" x="20" y="25" width="324" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="3Ca-4p-hAC"/>
                                                 </constraints>
@@ -353,6 +353,19 @@
                                                     <action selector="onClickSearchBtn:" destination="8Dj-bR-W9h" eventType="touchUpInside" id="7nc-bi-s3M"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLZ-gW-dBa">
+                                                <rect key="frame" x="379" y="27.5" width="15" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="15" id="R0A-kk-FcJ"/>
+                                                    <constraint firstAttribute="height" constant="15" id="hsp-7S-EGz"/>
+                                                </constraints>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="close" symbolScale="large"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="onClickCancleBtn:" destination="8Dj-bR-W9h" eventType="touchUpInside" id="qWF-vm-Kg5"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -362,9 +375,11 @@
                                             <constraint firstAttribute="trailing" secondItem="Jfk-Mp-Dfg" secondAttribute="trailing" constant="20" id="Xrk-OM-QKG"/>
                                             <constraint firstAttribute="bottom" secondItem="3fa-bQ-2YF" secondAttribute="bottom" constant="61" id="dnv-hy-ABq"/>
                                             <constraint firstItem="4f9-zn-2Xj" firstAttribute="leading" secondItem="ciV-VX-lU8" secondAttribute="leading" constant="20" symbolic="YES" id="g4G-Gv-wOQ"/>
+                                            <constraint firstItem="pLZ-gW-dBa" firstAttribute="centerY" secondItem="4f9-zn-2Xj" secondAttribute="centerY" id="lq6-Br-jN9"/>
                                             <constraint firstAttribute="trailing" secondItem="3fa-bQ-2YF" secondAttribute="trailing" constant="20" id="nFN-9y-7Cg"/>
                                             <constraint firstItem="3fa-bQ-2YF" firstAttribute="leading" secondItem="ciV-VX-lU8" secondAttribute="leading" constant="20" id="pZ2-wp-Agu"/>
-                                            <constraint firstAttribute="trailing" secondItem="4f9-zn-2Xj" secondAttribute="trailing" constant="20" symbolic="YES" id="tBM-Ql-COu"/>
+                                            <constraint firstAttribute="trailing" secondItem="4f9-zn-2Xj" secondAttribute="trailing" constant="70" id="tBM-Ql-COu"/>
+                                            <constraint firstItem="pLZ-gW-dBa" firstAttribute="trailing" secondItem="Jfk-Mp-Dfg" secondAttribute="trailing" id="yb3-Ej-iOY"/>
                                             <constraint firstItem="Jfk-Mp-Dfg" firstAttribute="leading" secondItem="ciV-VX-lU8" secondAttribute="leading" constant="20" id="zFM-Je-Xtk"/>
                                         </constraints>
                                     </view>
@@ -404,21 +419,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbx-pZ-NQh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3039.130434782609" y="117.85714285714285"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="6Co-AT-OqA">
-            <objects>
-                <viewController id="lzG-C1-dcB" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pvJ-q9-0gD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="RHg-Wb-cVZ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7I6-ls-fMN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3906" y="100"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lge-fn-CuL">

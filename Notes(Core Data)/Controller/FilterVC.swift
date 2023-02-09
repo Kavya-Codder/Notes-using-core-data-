@@ -48,7 +48,7 @@ class FilterVC: UIViewController {
         }
         datePicker.backgroundColor = .lightGray
         datePicker.datePickerMode =  .date
-        datePicker.maximumDate = Date()
+       // datePicker.maximumDate = Date()
         
         //ToolBar
         let toolbar = UIToolbar()
@@ -102,6 +102,11 @@ class FilterVC: UIViewController {
         print("in filtervc", noteData.count)
         self.featchDataDelegate.featchData(filterNotes: noteData)
         dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func onClickCancleBtn(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 // extension
